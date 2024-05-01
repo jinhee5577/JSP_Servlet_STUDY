@@ -1,2 +1,2 @@
-# JSP_Servlet_STUDY
-그동안 JSP 와 Servlet을 공부한 내용을 기록한 레포지토리 입니다.
+# 🚀빅데이터 분석 서비스 개발자 교육 과정을 통해 공부한 JSP_Servlet_STUDY 프로젝트 기록 레포지토리
+📚 그동안 JSP 와 Servlet을 공부한 내용을 기록한 레포지토리 입니다.
