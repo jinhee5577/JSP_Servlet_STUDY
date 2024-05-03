@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- Maven pom.xml의 모델버전  -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- 프로젝트를 생성ㅇ한 조직 또는 그룹명. 보통 url,역순으로 지정. -->
+	<groupId>com.smhrd</groupId>
+	<artifactId>Maven</artifactId>
+	<!-- 프로젝트에서 생성되는 기본 아티펙트(라이브러리, 플러그인, 프로젝트모듈)의 고유 이름. 
+   		<artifactId> - <version> <extention>test - 0.0.1.SNAPSHOT.jar </artifactId>
+   -->
+	<!-- 어플리케이션의 버전, 스냅샵이 붙으면 아직 개발단계라는 의미!. -->
+	<version>0.0.1-SNAPSHOT</version>
+	<!-- 배포시에 사용되는 패키징 방식. (JAR, WAR EAR POM) -->
+	<packaging>war</packaging>
+
+	<!-- 실제 프로젝트 이름. -->
+	<name>Maven Maven Webapp</name>
+	<!-- FIXME change it to the project's website -->
+	<!-- 해당 하는 프로젝트를 찾을수 있는 웹사이트. -->
+	<url>http://www.example.com</url>
+
+	<!-- ============================ 해당 하는 프로젝트에 관한 정보
+	=================================================== -->
+
+
+	<!-- properties : pom.xml에서 중복해서 사용되는 설정값들. (버전 설정.)  -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>11</maven.compiler.source> <!-- 우리가 사용할 JAE(실행
+		환경.) -->
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
+
+
+	<!-- dependencies : 라이브러리를 가져온다.  -->
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>23.2.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.6</version>
+		</dependency>
+		
+		<!-- gson 라이브러리 가져옴.-->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.7</version>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<finalName>Maven</finalName>
+		<pluginManagement><!-- lock down plugins versions to avoid using Maven
+			defaults (may be moved to parent pom) -->
+			<plugins>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<!-- see
+				http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.2.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

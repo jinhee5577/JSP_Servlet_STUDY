@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<form action="JoinService" method="post">
+		<input type="text" id="idinp" name="id" placeholder="아이디를 입력하세욧." />
+		<button type="button" onclick="id_doubleCK()">아이디 중복확인</button>
+		<!-- form 태그 안의 button,의 기본 type은 submit이다!!!!!> -->
+
+		<br>
+		<input type="text" name="pw" placeholder="비밀번호를 입력하세요." /><br>
+		<input type="text" name="nic" placeholder="닉네임을 입력하세요." /><br>
+		<input type="submit" value="JOIN" />
+	</form>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script>
+		let idinp = document.querySelector('#idinp');
+
+		//  버튼 클릭시 Ajax 사용.
+		const id_doubleCK = () => {
+			$.ajax({
+				url: "IdCheck",
+				data: {"inputId": idinp.value},
+				dataType: "json",
+				success: function (res){
+					// res :서블릿에서 반환 받은 데이터.
+					console.log(res);
+					if (res == 1) {
+						alert("아이디 사용불가 합니다!.");
+					} else {
+						alert("아이디 사용가능 합니다!.");
+					}
+				},
+				error: function () {
+
+				}
+
+			});
+
+		};
+		
+		
+	    // 다른 ajax방식
+		const id_doubleCK2 = async () => {
+
+			const data = {
+				method: 'POST',
+				body:JSON.stringify({"inputId": idinp.value}),
+			};
+
+			const response = await fetch("IdCheck", data);
+			console.log(response);
+			
+			const jsonData = await response.json();
+			// res :서블릿에서 반환 받은 데이터.
+			if (jsonData == 1) {
+				alert("아이디 사용불가 합니다!.");
+			} else {
+				alert("아이디 사용가능 합니다!.");
+			}
+
+		}
+
+
+
+	</script>
+
+</body>
+
+</html>

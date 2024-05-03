@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MemberSQL">
+	<!-- mapper의 용도 sql문 모아둬서 분리
+		 mapper테그 사용,속성을 가지고 있음. (하나의 하나씩만 사용가능.)
+		 mapper테그 안에 sql쿼리문 작성한다.
+		 
+		 1. namespace 역할: 해당 mapper.xml의 구분. -> 여러개의 mapper가 생길수 있으니까!.
+		
+	 -->
+	<select id="LoginSelect" parameterType="Member" resultType="Member" >
+		<!--  parameterType -> SQL문에 들어갈 파라미터들 #(필드변수)이 어떤 dto객체에 있는지 지정 or 데이터타입.
+			  resultType ->  쿼리문이 실행된 이후 결과 를 담을 타입.	
+		 -->
+		select * from MavenMember where id = #{id} and pw = #{pw}
+	</select>
+	
+	<insert id="JoinMember" parameterType="Member" >
+		<!--  parameterType -> SQL문에 들어갈 파라미터들 #(필드변수)이 어떤 dto객체에 있는지 지정 or 데이터타입.
+			  resultType ->  쿼리문이 실행된 이후 결과 를 담을 타입.	
+		 -->
+		insert into MavenMember values(#{id}, #{pw}, #{nic})
+	</insert>
+
+	
+</mapper>
