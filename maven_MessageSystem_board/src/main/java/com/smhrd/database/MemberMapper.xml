@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 5. Mapper 만들기 -> SQL 쿼리문을 작성하는 파일 -->
+<!-- namespace : 현재 Mapper의 id를 그룹화 하는 속성
+				 sql 태그의 id가 중복 될 수 있기 때문에 id를 잘 찾아갈 수 있도록 그룹화
+				 주로 현재 Mapper파일의 경로를 작성 -->
+<mapper namespace="com.smhrd.database.MemberMapper">
+
+	<insert id="joinMember" parameterType="Member">
+		insert into web_member values(#{email}, #{pw}, #{tel}, #{address})
+	</insert>
+	
+	<select id="loginMember" parameterType="Member" resultType="Member">
+		select * from web_member where email=#{email} and pw=#{pw}
+	</select>
+	
+	<select id="emailCheck" parameterType="String" resultType="boolean">
+		select case when count(*)>0 then 1 else 0 end result
+		from web_member where email=#{email}
+	</select>
+	
+	<update id="updateMember" parameterType="Member">
+		update web_member set pw=#{pw}, tel=#{tel}, address=#{address}
+		where email=#{email}
+	</update>
+	
+	<select id="allMember" resultType="Member">
+		select * from web_member where not(email='admin')
+	</select>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete from web_member where email=#{email}
+	</delete>
+	
+	
+	
+
+</mapper>
