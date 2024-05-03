@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.db.MemberMapper">
+
+	<!-- insert의 경우 결과값은 int형이다!.  insert에서는 resultType이 자동으로 int형이 된다. -->
+	<insert id="join" parameterType="com.smhrd.model.MemberDTO">
+		<!-- parameterType -> SQL문에 들어갈 파라미터들 #(필드변수)이 어떤 dto객체에 있는지 지정 or 데이터타입. 
+			resultType -> 쿼리문이 실행된 이후 결과 를 담을 타입. -->
+		insert into web_member values(#{email}, #{pw}, #{tel}, #{address})
+	</insert>
+
+    <select id="login" parameterType="com.smhrd.model.MemberDTO" resultType="com.smhrd.model.MemberDTO">
+      select * from web_member where email=#{email} and pw=#{pw}
+    </select>
+    
+    <delete id="deleteMember" parameterType="String">
+      delete from web_member where email=#{delete}
+    </delete>
+    
+    <update id="updateMember" parameterType="com.smhrd.model.MemberDTO">
+    	update web_member set pw=#{pw}, tel=#{tel}, address=#{address} where email=#{email}
+    </update>
+
+    <select id="allMembers" resultType="Member">
+    	select * from web_member where not(email='admin')
+    </select>
+    
+    <select id="emailCheck" parameterType="String" resultType="boolean">
+    	select case when count(*) >0 then 1 else 0 end result from web_member where email=#{email}
+    </select>
+   <!-- 요 전체 조회하는 select문은 MemberDTO,객체에 담아 DAO객체의 allMember메소드에서  -> sqlSession.selectList가 List형태로 만들어준다!. -->
+</mapper> 

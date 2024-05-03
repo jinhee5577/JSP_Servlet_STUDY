@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.db.MessageMapper">
+	<insert id="sendMessage" parameterType="com.smhrd.model.MessageaDTO">
+		INSERT INTO WEB_MEMBER_MESSAGE
+		VALUES(NUM_MESSAGE.NEXTVAL,#{sendNmae},#{reciveEmail},#{message},SYSDATE)
+	</insert>
+
+	<select id="showMessage" parameterType="String" resultType="com.smhrd.model.MessageaDTO" >
+		select * from WEB_MEMBER_MESSAGE where reciveEmail=#{email}
+	</select>
+
+	<delete id="delteMessage" >  <!-- parameterType="Integer"가 타입 안에 들어가는 Integer가 디폴트 따라서 생략해도 자동으로 Integer가 된다. 다른값들은 넣어줘야 한다!.-->
+		delete from WEB_MEMBER_MESSAGE where num=#{num}
+	</delete>
+	
+	<delete id="deleteAllMessage" parameterType="String">  <!-- parameterType="Integer"가 타입 안에 들어가는 Integer가 디폴트 따라서 생략해도 자동으로 Integer가 된다. 다른값들은 넣어줘야 한다!.-->
+		delete from WEB_MEMBER_MESSAGE where reciveEmail=#{email}
+	</delete>
+</mapper>
