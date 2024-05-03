@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<!-- 
+		.html파일 : 데이터를 요청하는 공간(데이터를 전송)
+		.java(servlte)파일: 요청 데이터를 받아서 응답을 되돌려 주는 공간
+		★★데이터 전송의 3가지 조건 ★★
+		1). 어디로 데이터를 보낼건지 
+		>> form태그에서(필수!) action attribute 사용
+		>> Servlet의 url mapping 값을 가져오면 된다!.
+		2). 무엇을 보낼건지 (어떤 데이터를 보낼건지)
+		>> input태그 name attribute사용
+		3). 언제 보낼건지
+		>> input태그 type="submit" 버튼.
+				
+	-->
+	<form action="DataSend">
+		데이터 입력하기 : <input type="text" name="name"/>
+		<input type="submit">
+
+	</form>
+
+
+
+
+</body>
+</html>
